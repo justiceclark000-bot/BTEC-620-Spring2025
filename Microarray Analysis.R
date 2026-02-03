@@ -1,4 +1,4 @@
-#Name: Justice Clark; Date: 01/27/2026; Purpose: Microarray Analysis
+#Name: Justice Clark; Date: 02/3/2026; Purpose: Microarray Analysis
 
 #Install Affymetrix library/Package
 if (!require("BiocManager", quietly = TRUE))
@@ -17,6 +17,16 @@ data <-ReadAffy()
 #Generate a boxplot to visualize dataset
 boxplot(data)
 
-#Normalize dataset to remove any outliers and stablize the median for all .CEL files
+#Normalize dataset to remove any outliers and stabilize the median for all .CEL files
+normalizeddata<-rma(data)
 
-Raw-Microarray-plot
+#Generate a boxplot to visualize normalized dataset
+boxplot (exprs(normalizeddata))
+
+#Fold change analysis for comparing treatment vs control samples
+#Let's assume GSM4843.CEL AND GSM4844.CEL SAMPLES TO BE Leukemia/Blood cancer and GSM4845.CEL AND GSM4846.CEL TO BE Normal blood samples 
+
+
+
+
+RMA_Normalized Plot. PDF
