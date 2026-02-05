@@ -1,4 +1,4 @@
-#Name: Justice Clark; Date: 02/3/2026; Purpose: Microarray Analysis
+#Name: Justice Clark; Date: 02/5/2026; Purpose: Microarray Analysis
 
 #Install Affymetrix library/Package
 if (!require("BiocManager", quietly = TRUE))
@@ -26,7 +26,22 @@ boxplot (exprs(normalizeddata))
 #Fold change analysis for comparing treatment vs control samples
 #Let's assume GSM4843.CEL AND GSM4844.CEL SAMPLES TO BE Leukemia/Blood cancer and GSM4845.CEL AND GSM4846.CEL TO BE Normal blood samples 
 
+#Take means/average on each row
+Newdata <-exprs(normalizeddata)
+Treatment <-Newdata[,c(1,2)]
+Control <-Newdata[,c(3,4)]
 
+head(Treatment)
+head(Control)
 
+#Apply the rowmeans function to calculate averages 
+Treatmentaverage <-rowMeans(Treatment)
+Controlaverage <-rowMeans(Control)
 
-RMA_Normalized Plot. PDF
+head(Treatmentaverage)
+head(Controlaverage)
+
+#Apply fold change by subtraction 
+foldchange <-Treatmentaverage - Controlaverage
+
+head(foldchange)
