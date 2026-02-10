@@ -1,4 +1,4 @@
-#Name: Justice Clark; Date: 02/5/2026; Purpose: Microarray Analysis
+#Name: Justice Clark; Date: 02/10/2026; Purpose: Microarray Analysis
 
 #Install Affymetrix library/Package
 if (!require("BiocManager", quietly = TRUE))
@@ -45,3 +45,8 @@ head(Controlaverage)
 foldchange <-Treatmentaverage - Controlaverage
 
 head(foldchange)
+
+#If the gene's fold change value is>2 its an up-regu;ated gene, and if it's <-2 its a down-regulated gene, and if genes are between -2 and +2, they are insignificant genes. 
+
+#Export variable foldchange in a CSV file
+write.csv(foldchange, "foldchange.csv")
