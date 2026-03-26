@@ -7,7 +7,11 @@ library (ape)
 text.string<- "(((((((cow, pig),whale),(bat,(lemur,human))),(robin,iguana)),coelacanth),gold_fish),shark);" 
 
 #Generate some dummy data for tree structure
-> vert.tree<-read.tree(text=text.string)
+vert.tree<-read.tree(text=text.string)
 
 #Plot the tree structure
-> plot(vert.tree,no.margin=TRUE,edge.width=2)
+plot(vert.tree,no.margin=TRUE,edge.width=2)
+
+#Writing/storing the tree structure dataset
+setwd("/Users/jclark/Downloads")
+write.tree(vert.tree,file="dummy.tre")
